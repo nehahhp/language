@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Replacement App</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <p>Did you <span id="target-word">sleep</span> well?</p>
+    <p class="translation">خوب خواب کردی؟</p>
+    <button id="generate">Generate Suggestions</button>
+    <ul id="suggestions"></ul>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Learning - Select Language</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+      <h1>Language Learning</h1>
+      <p class="subtitle">Advanced Learning Assisted with AI</p>
+    </div>
+    
+    <div class="language-selection">
+      <h2>Select Your Native Language</h2>
+      <p class="instruction">Choose your language for advanced AI-assisted learning</p>
+      
+      <div class="language-grid">
+        <div class="language-card active" onclick="location.href='/advanced/dari'">
+          <div class="language-flag">دری</div>
+          <h3>Dari</h3>
+          <p>Language of Afghanistan</p>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">پښتو</div>
+          <h3>Pashto</h3>
+          <p>Language of Afghanistan</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">🇨🇩</div>
+          <h3>Lingala</h3>
+          <p>Language of Congo</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">🇪🇷</div>
+          <h3>Tigrinya</h3>
+          <p>Language of Eritrea</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">🇸🇩</div>
+          <h3>Arabic</h3>
+          <p>Language of Sudan / Iraq</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">🇮🇷</div>
+          <h3>Farsi</h3>
+          <p>Language of Iran</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+        
+        <div class="language-card disabled">
+          <div class="language-flag">🇨🇫</div>
+          <h3>Sango</h3>
+          <p>Language of Central African Republic</p>
+          <div class="coming-soon">Coming Soon</div>
+        </div>
+      </div>
+      
+      <div class="back-button">
+        <button onclick="location.href='/'">← Back to Home</button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <p>Developed by Neha Hariharaprasad for the benefit of Center for Refugee Services, San Antonio</p>
+  </footer>
+</body>
+</html> 

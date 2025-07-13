@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Learning - Language Learning App</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+      <h1>Language Learning</h1>
+      <p class="subtitle">Advanced Learning Assisted with AI</p>
+    </div>
+    
+    <div class="advanced-content">
+      <h2>AI Sentence Generator</h2>
+      <p class="instruction">Practice creating variations of sentences by replacing key words</p>
+      
+      <div class="sentence-container">
+        <p class="sentence">Did you <span id="target-word">sleep</span> well?</p>
+        <p class="translation">خوب خواب کردی؟</p>
+        <button id="generate" class="generate-btn">Generate Suggestions</button>
+      </div>
+      
+      <div class="suggestions-container">
+        <ul id="suggestions"></ul>
+      </div>
+      
+      <div class="back-button">
+        <button onclick="location.href='/advanced'">← Back to Language Selection</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Dari translations mapping
+    const dariTranslations = {
+      "eat": "خوردن",
+      "study": "مطالعه",
+      "relax": "آرام کردن",
+      "work": "کار کردن",
+      "exercise": "ورزش کردن",
+      "sleep": "خواب کردن",
+      "dream": "خواب دیدن",
+      "read": "خواندن",
+      "write": "نوشتن",
+      "walk": "قدم زدن",
+      "run": "دویدن",
+      "play": "بازی کردن",
+      "cook": "پخت کردن",
+      "clean": "تمیز کردن",
+      "drive": "رانندگی کردن",
+      "swim": "شنا کردن",
+      "dance": "رقص کردن",
+      "sing": "آواز خواندن",
+      "listen": "گوش کردن",
+      "watch": "تماشا کردن",
+      "think": "فکر کردن",
+      "travel": "سفر کردن",
+      "learn": "یاد گرفتن",
+      "teach": "درس دادن",
+      "speak": "صحبت کردن",
+      "talk": "گفتگو کردن",
+      "laugh": "خندیدن",
+      "cry": "گریه کردن",
+      "smile": "لبخند زدن",
+      "rest": "استراحت کردن",
+      "pray": "دعا کردن",
+      "help": "کمک کردن",
+      "shop": "خرید کردن",
+      "buy": "خریدن",
+      "sell": "فروختن",
+      "visit": "دیدن",
+      "meet": "ملاقات کردن",
+      "wait": "انتظار کشیدن",
+      "hurry": "عجله کردن",
+      "remember": "یاد آوردن",
+      "forget": "فراموش کردن",
+      "understand": "فهمیدن",
+      "explain": "توضیح دادن",
+      "answer": "جواب دادن",
+      "question": "سؤال کردن",
+      "celebrate": "جشن گرفتن",
+      "party": "مهمانی کردن",
+      "organize": "سازماندهی کردن",
+      "plan": "برنامه ریزی کردن",
+      "prepare": "آماده کردن",
+      "finish": "تمام کردن",
+      "start": "شروع کردن",
+      "begin": "آغاز کردن",
+      "continue": "ادامه دادن",
+      "stop": "متوقف کردن",
+      "pause": "مکث کردن"
+    };
+
+    function findChangedWord(original, suggestion) {
+      // Remove number prefix from suggestion
+      const cleanSuggestion = suggestion.replace(/^\d+\.\s*/, '');
+      
+      const originalWords = original.toLowerCase().split(' ');
+      const suggestionWords = cleanSuggestion.toLowerCase().split(' ');
+      
+      for (let i = 0; i < originalWords.length && i < suggestionWords.length; i++) {
+        if (originalWords[i] !== suggestionWords[i]) {
+          return {
+            word: suggestionWords[i],
+            position: i,
+            translation: dariTranslations[suggestionWords[i]] || suggestionWords[i]
+          };
+        }
+      }
+      return null;
+    }
+
+    function highlightChangedWord(text, original) {
+      const cleanText = text.replace(/^\d+\.\s*/, '');
+      const changedWord = findChangedWord(original, text);
+      
+      if (changedWord) {
+        const words = cleanText.split(' ');
+        words[changedWord.position] = `<span class="word-highlight">
+          <span class="dari-translation">${changedWord.translation}</span>
+          ${words[changedWord.position]}
+        </span>`;
+        return words.join(' ');
+      }
+      
+      return cleanText;
+    }
+
+    document.getElementById("generate").addEventListener("click", async () => {
+      const sentence = "Did you sleep well?";
+      const word = "sleep";
+
+      try {
+        const res = await fetch("/suggestions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sentence, word }),
+        });
+
+        if (!res.ok) {
+          const txt = await res.text();
+          console.error(`Server Error ${res.status}:\n`, txt);
+          alert("Oops, something went wrong—check the console for details.");
+          return;
+        }
+
+        const { suggestions } = await res.json();
+        const list = document.getElementById("suggestions");
+        list.innerHTML = "";
+
+        suggestions.forEach(text => {
+          const li = document.createElement("li");
+          
+          // Create highlighted HTML content
+          const highlightedText = highlightChangedWord(text, sentence);
+          li.innerHTML = highlightedText;
+
+          // Create the audio-play button
+          const btn = document.createElement("button");
+          btn.textContent = "🔊";
+          btn.className = "audio-btn";
+          btn.addEventListener("click", () => {
+            // Remove number prefix (e.g., "1. " or "2. ") before speaking
+            const cleanText = text.replace(/^\d+\.\s*/, '');
+            const utter = new SpeechSynthesisUtterance(cleanText);
+            window.speechSynthesis.speak(utter);
+          });
+
+          li.appendChild(btn);
+          list.appendChild(li);
+        });
+
+      } catch (err) {
+        console.error("Fetch failed:", err);
+        alert("Network error—check your console.");
+      }
+    });
+  </script>
+  
+  <footer class="footer">
+    <p>Developed by Neha Hariharaprasad for the benefit of Center for Refugee Services, San Antonio</p>
+  </footer>
+</body>
+</html> 

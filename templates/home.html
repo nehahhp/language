@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Learning App</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+      <h1>Language Learning</h1>
+      <p class="subtitle">Master languages with AI assistance</p>
+    </div>
+    
+    <div class="options">
+      <div class="option-card" onclick="location.href='/language-selection'">
+        <div class="option-icon">📚</div>
+        <h2>Beginner</h2>
+        <p>Start with basic conversations and essential phrases</p>
+      </div>
+      
+      <div class="option-card" onclick="location.href='/advanced'">
+        <div class="option-icon">🧠</div>
+        <h2>Advanced</h2>
+        <p>Learning Assisted with AI</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <p>Developed by Neha Hariharaprasad for the benefit of Center for Refugee Services, San Antonio</p>
+  </footer>
+</body>
+</html> 

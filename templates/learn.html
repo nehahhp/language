@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn {{ language.title() }} - Language Learning App</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="top-nav">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+        <h1>Language Learning</h1>
+      </div>
+      <button class="back-btn-top" onclick="location.href='/language-selection'">← Back</button>
+    </div>
+    
+    <div class="learning-content">
+      <div class="language-header">
+        <h2>Learning {{ language.title() }}</h2>
+        <p class="subtitle">Essential phrases for daily communication</p>
+      </div>
+      
+      <div class="situations">
+        <div class="situation">
+          <h3>🏠 Small Talk at Home</h3>
+          <div class="phrase-list">
+            <div class="phrase-item">
+                             <div class="native-phrase">
+                 <span class="phrase-text" id="dari-home-1">{{ 'من در خانه هستم' if language == 'dari' else 'زه په کور کې یم' }}</span>
+                 <button class="audio-btn" onclick="playAudio('{{ language }}/I am {% if language == 'dari' %}Home{% else %}home{% endif %}.m4a')">🔊</button>
+               </div>
+               <div class="english-phrase">
+                 <span class="phrase-text">I am home</span>
+                 <button class="audio-btn" onclick="playAudio('English/I am home.m4a')">🔊</button>
+               </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'عصر شما را میبنم' if language == 'dari' else 'ماښام ته به ګورو' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/See you in the evening.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">See you in the evening</span>
+                <button class="audio-btn" onclick="playAudio('English/See you in the evening.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'خوب خواب کردی؟' if language == 'dari' else 'ایا تاسو ښه خوب وکړ؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Did you sleep well_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Did you sleep well?</span>
+                <button class="audio-btn" onclick="playAudio('English/Did you sleep well_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'میتوانید به من کمک کنید؟' if language == 'dari' else 'کولای شې زما سره همکاري وکړې؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Can you please help me_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Can you please help me?</span>
+                <button class="audio-btn" onclick="playAudio('English/Can you please help me_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'میتوانی دیر تر انجام بدی' if language == 'dari' else 'تاسې کولای شی چې وروسته یې تر سره کړی' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/You can do it later.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">You can do it later</span>
+                <button class="audio-btn" onclick="playAudio('English/You can do it later.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'چی وقت میایی؟' if language == 'dari' else 'تاسې کله راځۍ؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/When are you coming_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">When are you coming?</span>
+                <button class="audio-btn" onclick="playAudio('English/When are you coming_.m4a')">🔊</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="situation">
+          <h3>🏥 In the Medical Clinic</h3>
+          <div class="phrase-list">
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'معده مه درد میکنه' if language == 'dari' else 'زما په معده درد دی' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/I have stomach pain.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">I have stomach pain</span>
+                <button class="audio-btn" onclick="playAudio('English/I have stomach pain.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'از دیروز شانه درد هستم' if language == 'dari' else 'له پرون راهیسې زما په مټو درد دی' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/My shoulder is hurting from yesterday.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">My shoulder is hurting from yesterday</span>
+                <button class="audio-btn" onclick="playAudio('English/My shoulder is hurting from yesterday.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'از زینه ها افتادم' if language == 'dari' else 'زه له زینو را غورځیدلی یم' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/I fell down the stairs.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">I fell down the stairs</span>
+                <button class="audio-btn" onclick="playAudio('English/I fell down the stairs.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'کمک نیاز دارم' if language == 'dari' else 'زه کمک ته اړتیا لرم' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/I need help.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">I need help</span>
+                <button class="audio-btn" onclick="playAudio('English/I need help.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'ممیتوانم ای دوا را همرای غذا بخورم' if language == 'dari' else 'ایا زه دا دوا له ډوډۍ سره خوړلی شم' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Do I need to take this medicine with food_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Do I need to take this medicine with food?</span>
+                <button class="audio-btn" onclick="playAudio('English/Do I need to take this medicine with food_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'وقت بعدی مه چی وقت است؟' if language == 'dari' else 'زما بل د لیدو وخت کله دی؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/When is my next appointment_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">When is my next appointment?</span>
+                <button class="audio-btn" onclick="playAudio('English/When is my next appointment_.m4a')">🔊</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="situation">
+          <h3>🏪 In the Store</h3>
+          <div class="phrase-list">
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'از کجا نان پیدا کرده میتوانم؟' if language == 'dari' else 'ډوډۍ له کوم ځایه پیدا کولای شم؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Where can I find bread_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Where can I find bread?</span>
+                <button class="audio-btn" onclick="playAudio('English/Where can I find bread_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'از کجا شیر پیدا کرده میتوانم' if language == 'dari' else 'شیدې له کوم ځایه پیدا کولای شم؟' }}</span>
+                 <button class="audio-btn" onclick="playAudio('{{ language }}/Where can I find {% if language == 'dari' %}Milk{% else %}Milk{% endif %}_.m4a')">🔊</button>
+              </div>
+                             <div class="english-phrase">
+                 <span class="phrase-text">Where can I find milk?</span>
+                 <button class="audio-btn" onclick="playAudio('English/Where can I find milk_.m4a')">🔊</button>
+               </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'تشناب کجا است؟' if language == 'dari' else 'تشناب چیرته دی؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Where is the restroom_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Where is the restroom?</span>
+                <button class="audio-btn" onclick="playAudio('English/Where is the restroom_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'ایا میتوانم از ای کارت تحفه برای خرید استفاده کنم' if language == 'dari' else 'ایا د ډالۍ کارت څخه سودا اخیستلو لپاره استفاده کولای شم؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/Can I use a gift card to pay_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">Can I use a gift card to pay?</span>
+                <button class="audio-btn" onclick="playAudio('English/Can I use a gift card to pay_.m4a')">🔊</button>
+              </div>
+            </div>
+            
+            <div class="phrase-item">
+              <div class="native-phrase">
+                <span class="phrase-text">{{ 'اای چند قیمت دارد' if language == 'dari' else 'دا په څو دی؟' }}</span>
+                <button class="audio-btn" onclick="playAudio('{{ language }}/How much is this_.m4a')">🔊</button>
+              </div>
+              <div class="english-phrase">
+                <span class="phrase-text">How much is this?</span>
+                <button class="audio-btn" onclick="playAudio('English/How much is this_.m4a')">🔊</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-button">
+        <button onclick="location.href='/language-selection'">← Back to Language Selection</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function playAudio(audioPath) {
+      const audio = new Audio(`/static/audio/${audioPath}`);
+      audio.play().catch(e => {
+        console.error('Error playing audio:', e);
+        // Fallback to text-to-speech if audio file is not found
+        const text = event.target.previousElementSibling.textContent;
+        const utter = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utter);
+      });
+    }
+  </script>
+  
+  <footer class="footer">
+    <p>Developed by Neha Hariharaprasad for the benefit of Center for Refugee Services, San Antonio</p>
+  </footer>
+</body>
+</html> 

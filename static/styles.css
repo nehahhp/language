@@ -1,0 +1,621 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  flex: 1;
+}
+
+/* Logo Styles */
+.logo {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.1rem;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+/* Top Navigation for Learning Pages */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.top-nav .logo {
+  margin-bottom: 0;
+}
+
+.back-btn-top {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-btn-top:hover {
+  background: white;
+  color: #667eea;
+}
+
+/* Home Page Styles */
+.options {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  flex-direction: row;
+}
+
+.option-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  width: 320px;
+  min-height: 220px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.option-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.option-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.option-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Language Selection Styles */
+.language-selection {
+  text-align: center;
+}
+
+.language-selection h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.instruction {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.language-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.language-card.active {
+  cursor: pointer;
+}
+
+.language-card.active:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.language-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.language-flag {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.language-card h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.language-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.coming-soon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Learning Page Styles */
+.learning-content {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.language-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.language-header h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.situations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.situation {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid #667eea;
+}
+
+.situation h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.phrase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.phrase-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.native-phrase {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: #667eea;
+  border-radius: 6px;
+  color: white;
+}
+
+.english-phrase {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #e9ecef;
+  border-radius: 6px;
+  color: #333;
+}
+
+.phrase-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.audio-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  min-width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.native-phrase .audio-btn {
+  background: rgba(255,255,255,0.2);
+}
+
+.native-phrase .audio-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.english-phrase .audio-btn {
+  background: rgba(0,0,0,0.1);
+}
+
+.english-phrase .audio-btn:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+/* Advanced Page Styles */
+.advanced-content {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.advanced-content h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sentence-container {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.sentence {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#target-word {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.translation {
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.generate-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.generate-btn:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+}
+
+.suggestions-container {
+  margin-top: 2rem;
+}
+
+#suggestions {
+  list-style: none;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#suggestions li {
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Back Button Styles */
+.back-button {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.back-button button {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.back-button button:hover {
+  background: white;
+  color: #667eea;
+}
+
+.learning-content .back-button button,
+.advanced-content .back-button button {
+  background: #667eea;
+  color: white;
+  border: 2px solid #667eea;
+}
+
+.learning-content .back-button button:hover,
+.advanced-content .back-button button:hover {
+  background: #5a67d8;
+  border-color: #5a67d8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 2rem;
+  }
+  
+  .logo-img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .top-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .back-btn-top {
+    align-self: flex-end;
+  }
+  
+  .options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .option-card {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  
+  .language-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .situations {
+    gap: 1.5rem;
+  }
+  
+  .situation {
+    padding: 1rem;
+  }
+  
+  .phrase-item {
+    padding: 0.75rem;
+  }
+  
+  .native-phrase,
+  .english-phrase {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .phrase-text {
+    font-size: 0.95rem;
+  }
+  
+  .sentence {
+    font-size: 1.2rem;
+  }
+  
+  .sentence-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+  
+  .learning-content,
+  .advanced-content {
+    padding: 1rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+  
+  .logo-img {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .footer {
+    margin-top: 2rem;
+    padding: 0.75rem;
+  }
+  
+  .footer p {
+    font-size: 0.8rem;
+  }
+  
+  .language-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Coming Soon Page Styles */
+.coming-soon-content {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.coming-soon-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-content h2 {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-content .instruction {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+  .coming-soon-content .subtitle {
+    color: #999;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+/* Advanced Word Highlighting Styles */
+.word-highlight {
+  position: relative;
+  color: #667eea;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.dari-translation {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #764ba2;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+  .dari-translation::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #764ba2;
+  }
+
+/* Footer Styles */
+.footer {
+  background: rgba(0,0,0,0.1);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
